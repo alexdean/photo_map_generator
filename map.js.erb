@@ -1,0 +1,34 @@
+$(function() {
+  var map = L.map('map', {maxZoom: 14});
+
+  var gglTerrain = new L.Google('TERRAIN');
+  map.addLayer(gglTerrain);
+
+  var photoLayer = L.photo.cluster({
+    spiderfyDistanceMultiplier: 2.5,
+    spiderfyOnMaxZoom: true
+  }).on('click', function (evt) {
+    var photo = evt.layer.photo,
+    template = '<img src="{url}" width="100%"/><p>{caption}</p>';
+    evt.layer.bindPopup(L.Util.template(template, photo), {
+      className: 'leaflet-popup-photo',
+      minWidth: 400
+    }).openPopup();
+  });
+
+  var photos = [];
+  <% @photos.each do |photo| %>
+    photos.push(<%= photo.to_json %>);
+  <% end %>
+  photoLayer.add(photos).addTo(map);
+
+  <% @tracks.each do |track| %>
+    L.polyline(
+      <%= track.to_json %>,
+      {color: '<%= next_line_color %>'}
+    ).addTo(map);
+  <% end %>
+
+  L.control.scale({position: 'topright'}).addTo(map);
+  map.fitBounds(photoLayer.getBounds());
+});

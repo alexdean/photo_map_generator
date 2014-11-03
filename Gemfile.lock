@@ -1,0 +1,38 @@
+GIT
+  remote: https://github.com/mkroman/httparty-cookies.git
+  revision: 42303325d9ddfec19e89f3e94ea6442f0dbbf3db
+  ref: 42303325d9ddfec19e89f3e94ea6442f0dbbf3db
+  specs:
+    httparty-cookies (0.1.1)
+      http-cookie
+      httparty
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    domain_name (0.5.22)
+      unf (>= 0.0.5, < 1.0.0)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    interpolate (0.3.0)
+    json (1.8.1)
+    mini_portile (0.6.0)
+    multi_xml (0.5.5)
+    nokogiri (1.6.3.1)
+      mini_portile (= 0.6.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.6)
+    where_was_i (0.0.4)
+      interpolate (~> 0.3)
+      nokogiri (~> 1.6.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  httparty-cookies!
+  where_was_i (= 0.0.4)
